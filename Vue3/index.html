@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 3 Intro</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="counter">
+    Counter: {{ counter }}
+    <p v-once>This counter only once {{counter}}</p>
+  </div>
+
+  <div id="bind-attribute">
+    <span v-bind:title="message">
+      Hover to see the title!
+    </span>
+    <br />
+    <span :title="message">
+      Hover to see the title! with shorthand ':'
+    </span>
+  </div>
+  
+  <div id="event-handling">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+    <!-- same thing with shorthand -->
+    <button @click="reverseMessage">
+      Reverse Message using shorthand '@'
+    </button>
+  </div>
+
+  <div id="two-way-binding">
+    <p>{{message}}</p>
+    <input v-model="message" />
+  </div>
+
+  <div id="conditional-rendering">
+    <span v-if="seen">Now you see me</span>
+  </div>
+
+
+  <div id="list-rendering">
+    <ol>
+      <li
+        v-bind:style="dynamicColor"
+        v-for="todo in todos"
+      >
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+
+  <div id="todo-list-app">
+    <span v-html="title"></span>
+    <ol>
+      <!-- todo-item is the name of the Vue component -->
+      <todo-item
+        v-for="item in groceryList"
+        v-bind:todo="item"
+        v-bind:key="item.id"
+      ></todo-item>
+    </ol>
+    <p>{{ 4 ? 6 : 5}}</p>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
